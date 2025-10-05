@@ -5,86 +5,77 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity"
-    tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="-19dp">
+    tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/edtPass"
+    <!-- 1. Đường gióng vô hình để chia đôi màn hình theo chiều dọc -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="32dp"
-        android:ems="10"
-        android:hint="Pass Word"
-        android:inputType="textPassword"
-        android:background="@drawable/edittext_border"
-        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <!-- 2. Logo được ràng buộc để nằm ở giữa nửa trên của màn hình -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="291dp"
+        android:layout_height="291dp"
+        app:layout_constraintBottom_toTopOf="@id/guideline_horizontal_center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtUser" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/black_white_minimalist_professional_initial_logo_removebg_preview"
+        tools:ignore="ContentDescription" />
 
+    <!-- 3. Form đăng nhập được ràng buộc để nằm ở gần giữa nửa dưới màn hình -->
     <EditText
         android:id="@+id/edtUser"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="83dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="5dp"
-        android:ems="10"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edittext_border"
         android:hint="User Name"
         android:inputType="text"
-        android:background="@drawable/edittext_border"
+        app:layout_constraintTop_toTopOf="@id/guideline_horizontal_center"
         app:layout_constraintBottom_toTopOf="@+id/edtPass"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <EditText
+        android:id="@+id/edtPass"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_border"
+        android:hint="Pass Word"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@+id/edtUser"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+        app:layout_constraintStart_toStartOf="@+id/edtUser"
+        app:layout_constraintEnd_toEndOf="@+id/edtUser" />
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="207dp"
+        android:layout_width="0dp"
         android:layout_height="59dp"
-        android:layout_marginStart="102dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="102dp"
-        android:layout_marginBottom="98dp"
+        android:layout_marginTop="24dp"
         android:text="LOGIN ME"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPass" />
+        app:layout_constraintTop_toBottomOf="@+id/edtPass"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/edtPass"
+        app:layout_constraintEnd_toEndOf="@+id/edtPass" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="144dp"
-        android:layout_marginBottom="63dp"
+        android:layout_marginBottom="32dp"
         android:text="🔑 Lost password ?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="212dp"
-        android:layout_height="198dp"
-        android:layout_marginStart="99dp"
-        android:layout_marginTop="103dp"
-        android:layout_marginEnd="100dp"
-        app:layout_constraintBottom_toTopOf="@+id/edtUser"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/black_white_minimalist_professional_initial_logo_removebg_preview" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

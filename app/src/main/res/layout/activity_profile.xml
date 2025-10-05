@@ -5,22 +5,257 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#78BEEB"
+    android:fitsSystemWindows="true"
     tools:context=".profile">
 
+
+    <!-- Thanh tiêu đề (Header) -->
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="◀ Back"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="24dp" />
+        android:layout_marginStart="16dp"
+        android:drawablePadding="4dp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Back"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:drawableStartCompat="@drawable/ic_back_arrow"
+        app:layout_constraintBottom_toBottomOf="@+id/tvProfileTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvProfileTitle" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tvProfileTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="Profile"
-        tools:layout_editor_absoluteX="187dp"
-        tools:layout_editor_absoluteY="24dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/ibSettings"
+        android:layout_width="43dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/tl"
+        app:layout_constraintBottom_toBottomOf="@+id/tvProfileTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvProfileTitle"
+        tools:ignore="ContentDescription" />
+
+    <!-- Ảnh đại diện và tên -->
+    <ImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/avatar_background_shape"
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfileTitle"
+
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvNotificationBadge"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/notification_badge_background"
+        android:gravity="center"
+        android:text="3"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintCircle="@+id/ivAvatar"
+        app:layout_constraintCircleAngle="45"
+        app:layout_constraintCircleRadius="60dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tvProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Profile Name"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/ivAvatar"
+        app:layout_constraintStart_toStartOf="@+id/ivAvatar"
+        app:layout_constraintTop_toBottomOf="@+id/ivAvatar" />
+
+    <!-- Guideline để chia đôi màn hình cho Friends và Followers -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="206dp" />
+
+    <!-- Thông tin Friends và Followers -->
+    <TextView
+        android:id="@+id/tvFriendsCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="125"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfileName" />
+
+    <TextView
+        android:id="@+id/tvFriendsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Friends"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="@+id/tvFriendsCount"
+        app:layout_constraintStart_toStartOf="@+id/tvFriendsCount"
+        app:layout_constraintTop_toBottomOf="@+id/tvFriendsCount" />
+
+    <TextView
+        android:id="@+id/tvFollowersCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="250"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvFriendsCount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvFriendsCount"
+        app:layout_constraintTop_toTopOf="@+id/tvFriendsCount" />
+
+    <TextView
+        android:id="@+id/tvFollowersLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Followers"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="@+id/tvFollowersCount"
+        app:layout_constraintStart_toStartOf="@+id/tvFollowersCount"
+        app:layout_constraintTop_toBottomOf="@+id/tvFollowersCount" />
+
+    <!-- Layout trắng chứa thông tin liên hệ -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/white_container_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFollowersLabel">
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="16dp"
+            android:gravity="center_vertical"
+            android:paddingStart="24dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="20dp"
+            android:text="email : mail@email.com"
+            android:textColor="#555555"
+            android:textSize="16sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#E0E0E0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="16dp"
+            android:gravity="center_vertical"
+            android:paddingStart="24dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="20dp"
+            android:text="Phone : +99 999 555 222"
+            android:textColor="#555555"
+            android:textSize="16sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider1" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#E0E0E0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPhone" />
+
+        <TextView
+            android:id="@+id/tvSkype"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="16dp"
+            android:gravity="center_vertical"
+            android:paddingStart="24dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="20dp"
+            android:text="Skype : me007"
+            android:textColor="#555555"
+            android:textSize="16sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+        <TextView
+            android:id="@+id/tvWeb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:drawablePadding="16dp"
+            android:gravity="center_vertical"
+            android:paddingStart="24dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="20dp"
+            android:text="web : "
+            android:textColor="#555555"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
